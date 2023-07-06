@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-label (click)="back()">
+        {{ title }}
+      </ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" *ngIf="!isdetail">
+  <ion-list *ngFor="let item of data; let i = index">
+    <ion-item>
+      <ion-label (click)="detail(item._id)">
+        <ion-thumbnail item-left>
+          <img [src]="item?.picture" /> {{item?.name?.first}} {{item?.name?.last}}
+        </ion-thumbnail>        
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-content [fullscreen]="true" *ngIf="isdetail">
+  <ion-img>
+
+  </ion-img>
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <img [src]="selectFriend?.picture" />
+      </ion-thumbnail>
+      <ion-card-title>{{selectFriend?.name?.first}} {{selectFriend?.name?.last}}</ion-card-title>
+      <ion-card-subtitle>Location</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <iframe [src]="src"></iframe>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Email: {{selectFriend?.email}}
+    </ion-card-header>
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
